@@ -398,7 +398,7 @@ class LgRemoteControl extends LitElement {
                   </div>
 
 <!-- ################################# MEDIA CONTROL ################################# -->
-                 <div class="grid-container-media-control" >
+                 <div class="grid-container-media-control" style="display:none">
                       <button class="btn-flat flat-low ripple"  @click=${() => this._command("media.controls/play")}><ha-icon icon="mdi:play"/></button>
                       <button class="btn-flat flat-low ripple"  @click=${() => this._command("media.controls/pause")}><ha-icon icon="mdi:pause"/></button>
                       <button class="btn-flat flat-low ripple"  @click=${() => this._command("media.controls/stop")}><ha-icon icon="mdi:stop"/></button>

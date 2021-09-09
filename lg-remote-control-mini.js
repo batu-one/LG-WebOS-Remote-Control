@@ -29,8 +29,8 @@ class LgRemoteControlmini extends LitElement {
 
         const borderWidth = this.config.dimensions && this.config.dimensions.border_width ? this.config.dimensions.border_width : "1px";
         const scale = this.config.dimensions && this.config.dimensions.scale ? this.config.dimensions.scale : 1;
-        //const remoteWidth = Math.round(scale * 260) + "px";
-        const remoteWidth = "100%";
+        const remoteWidth = Math.round(scale * 260) + "px";
+        //const remoteWidth = "100%";
 
         const backgroundColor = this.config.colors && this.config.colors.background ? this.config.colors.background : "var(--primary-background-color)";
         const borderColor = this.config.colors && this.config.colors.border ? this.config.colors.border: "var(--app-header-text-color)";
@@ -55,12 +55,20 @@ class LgRemoteControlmini extends LitElement {
                       <button class="btn ripple item_sound" @click=${() => this._media_player_service("toggle")}><ha-icon icon="mdi:power" style="color: red;"/></button>
                       <button class="btn ripple item_up" style="background-color: transparent;" @click=${() => this._button("UP")}><ha-icon icon="mdi:chevron-up"/></button>
                       <button class="btn ripple item_input" Style="color:${stateObj.attributes.is_volume_muted === true ? 'red' : ''}; //height: 100%;" @click=${() => this._button("MUTE")}><span class="${stateObj.attributes.is_volume_muted === true ? 'blink' : ''}"><ha-icon icon="mdi:volume-mute"></span></button>
+                      <button class="btn ripple"  style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._media_player_service("volume_up")}><ha-icon icon="mdi:plus"/></button>
+                      <button class="btn ripple" style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._button("CHANNELUP")}><ha-icon icon="mdi:chevron-up"/></button>
+
                       <button class="btn ripple item_2_sx" style="background-color: transparent;" @click=${() => this._button("LEFT")}><ha-icon icon="mdi:chevron-left"/></button>
                       <button class="btn bnt_ok ripple item_2_c" style="border: solid 2px ${backgroundColor}"  @click=${() => this._button("ENTER")}>OK</button>
                       <button class="btn ripple item_right" style="background-color: transparent;" @click=${() => this._button("RIGHT")}><ha-icon icon="mdi:chevron-right"/></button>
+                      <button class="btn" style="border-radius: 0px; cursor: default; margin: 0px auto 0px auto; height: 100%;"><ha-icon icon="mdi:volume-high"/></button>
+                      <button class="btn" style="border-radius: 0px; cursor: default; margin: 0px auto 0px auto; height: 100%;"><ha-icon icon="mdi:parking"/></button>
+
                       <button class="btn ripple item_back" @click=${() => this._button("BACK")}><ha-icon icon="mdi:undo-variant"/></button>
                       <button class="btn ripple item_down" style="background-color: transparent;" @click=${() => this._button("DOWN")}><ha-icon icon="mdi:chevron-down"/></button>
                       <button class="btn ripple item_exit" @click=${() => this._button("EXIT")}>EXIT</button>
+                      <button class="btn ripple" style="border-radius: 0px 0px 50% 50%;  margin: 0px auto 0px auto; height: 100%;" @click=${() => this._media_player_service("volume_down")}><ha-icon icon="mdi:minus"/></button>
+                      <button class="btn ripple" style="border-radius: 0px 0px 50% 50%;  margin: 0px auto 0px auto; height: 100%;"  @click=${() => this._button("CHANNELDOWN")}><ha-icon icon="mdi:chevron-down"/></button>
                     </div>
 <!-- ################################# DIRECTION PAD END ################################# -->
                     `}
@@ -68,14 +76,11 @@ class LgRemoteControlmini extends LitElement {
                     `}
 
                   <div class="grid-container-volume-channel-control" style="//position:absolute; top: 0; right: 0;">
-                      <button class="btn ripple"  style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._media_player_service("volume_up")}><ha-icon icon="mdi:plus"/></button>
                       
-                      <button class="btn ripple" style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._button("CHANNELUP")}><ha-icon icon="mdi:chevron-up"/></button>
-                      <button class="btn" style="border-radius: 0px; cursor: default; margin: 0px auto 0px auto; height: 100%;"><ha-icon icon="mdi:volume-high"/></button>
-                      <button class="btn" style="border-radius: 0px; cursor: default; margin: 0px auto 0px auto; height: 100%;"><ha-icon icon="mdi:parking"/></button>
-                      <button class="btn ripple" style="border-radius: 0px 0px 50% 50%;  margin: 0px auto 0px auto; height: 100%;" @click=${() => this._media_player_service("volume_down")}><ha-icon icon="mdi:minus"/></button>
                       
-                      <button class="btn ripple" style="border-radius: 0px 0px 50% 50%;  margin: 0px auto 0px auto; height: 100%;"  @click=${() => this._button("CHANNELDOWN")}><ha-icon icon="mdi:chevron-down"/></button>
+                      
+                      
+                      
                   </div>
 
 
@@ -200,56 +205,17 @@ class LgRemoteControlmini extends LitElement {
       }
        .grid-container-cursor {
            display: grid;
-           grid-template-columns: 1fr 1fr 1fr;
+           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
            grid-template-rows: 1fr 1fr 1fr;
            overflow: hidden;
            height: var(--remotewidth);
            width: var(--remotewidth);
            grid-template-areas: "sound up input" "left ok right" "back down exit" 
       }
-       .grid-container-input {
-           display: grid;
-           grid-template-columns: 1fr 1fr 1fr;
-           grid-template-rows: calc(var(--remotewidth) / 2) calc(var(--remotewidth) / 0.5115);
-           background-color: transparent;
-           overflow: hidden;
-           width: var(--remotewidth);
-      }
-       .grid-container-sound {
-           display: grid;
-           grid-template-columns: 1fr 1fr;
-           grid-template-rows: 28% 6% 16% 16% 16% 16% 6%;
-           background-color: transparent;
-           overflow: hidden;
-           height: var(--remotewidth);
-           width: var(--remotewidth);
-           grid-template-areas: "bnt title" ". ." "tv tv-opt" "tv-phone opt" "hdmi line" "phone bluetooth" 
-      }
-       .grid-container-source {
-           display: grid;
-           grid-template-columns: 1fr 1fr 1fr 1fr;
-           grid-template-rows: auto;
-           background-color: transparent;
-           width: calc(var(--remotewidth) / 1.03);
-           overflow: hidden;
-           margin: auto;
-      }
-
-        .grid-container-color_btn{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-template-rows: auto;
-            background-color: transparent;
-            width: calc(var(--remotewidth) / 1.03);
-            height: calc(var(--remotewidth) / 10);
-            overflow: hidden;
-            margin: auto;
-        }
-
         .grid-container-volume-channel-control {
            display: grid;
-           grid-template-columns: 1fr 1fr 1fr;
-           grid-template-rows: 1fr 1fr;
+           grid-template-columns: 1fr 1fr;
+           grid-template-rows: 1fr 1fr 1fr;
            background-color: transparent;
            width: var(--remotewidth);
            height: calc(var(--remotewidth) / 1.4);

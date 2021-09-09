@@ -38,7 +38,7 @@ class LgRemoteControlmini extends LitElement {
 
         return html`
             <ha-card class="flex">
-            <div class="page" style="--remote-button-color: ${buttonColor}; --remote-text-color: ${textColor}; --remote-color: none; --remotewidth: ${remoteWidth};  --main-border-color: ${borderColor}; --main-border-width: ${borderWidth};position:relative;">
+            <div class="page" style="--remote-button-color: ${buttonColor}; --remote-text-color: ${textColor}; --remote-color: none; --remotewidth: ${remoteWidth};  --main-border-color: ${borderColor}; --main-border-width: ${borderWidth};">
                  ${this._show_inputs ? html`
                  ` : html`
                  ${this._show_sound_output ? html`

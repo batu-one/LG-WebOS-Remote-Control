@@ -29,7 +29,8 @@ class LgRemoteControlmini extends LitElement {
 
         const borderWidth = this.config.dimensions && this.config.dimensions.border_width ? this.config.dimensions.border_width : "1px";
         const scale = this.config.dimensions && this.config.dimensions.scale ? this.config.dimensions.scale : 1;
-        const remoteWidth = Math.round(scale * 260) + "px";
+        //const remoteWidth = Math.round(scale * 260) + "px";
+        const remoteWidth = "100%";
 
         const backgroundColor = this.config.colors && this.config.colors.background ? this.config.colors.background : "var(--primary-background-color)";
         const borderColor = this.config.colors && this.config.colors.border ? this.config.colors.border: "var(--app-header-text-color)";
@@ -248,7 +249,7 @@ class LgRemoteControlmini extends LitElement {
         .grid-container-volume-channel-control {
            display: grid;
            grid-template-columns: 1fr 1fr 1fr;
-           grid-template-rows: 1fr 1fr 1fr;
+           grid-template-rows: 1fr 1fr;
            background-color: transparent;
            width: var(--remotewidth);
            height: calc(var(--remotewidth) / 1.4);

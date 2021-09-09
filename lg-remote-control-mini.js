@@ -38,7 +38,7 @@ class LgRemoteControlmini extends LitElement {
 
         return html`
             <ha-card class="flex">
-            <div class="page" style="--remote-button-color: ${buttonColor}; --remote-text-color: ${textColor}; --remote-color: none; --remotewidth: ${remoteWidth};  --main-border-color: ${borderColor}; --main-border-width: ${borderWidth}">
+            <div class="page" style="--remote-button-color: ${buttonColor}; --remote-text-color: ${textColor}; --remote-color: none; --remotewidth: ${remoteWidth};  --main-border-color: ${borderColor}; --main-border-width: ${borderWidth};position:relative;">
                  ${this._show_inputs ? html`
                  ` : html`
                  ${this._show_sound_output ? html`
@@ -47,7 +47,7 @@ class LgRemoteControlmini extends LitElement {
                     ${this._show_keypad ? html`
                  ` : html`
 <!-- ################################# DIRECTION PAD ################################# -->
-                  <div class="grid-container-cursor">
+                  <div class="grid-container-cursor" style="position:absolute;top:0;left:0">
                   <div class="shape">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 79"><path d="m 30 15 a 10 10 0 0 1 20 0 a 15 15 0 0 0 15 15 a 10 10 0 0 1 0 20 a 15 15 0 0 0 -15 15 a 10 10 0 0 1 -20 0 a 15 15 0 0 0 -15 -15 a 10 10 0 0 1 0 -20 a 15 15 0 0 0 15 -15" fill="var(--remote-button-color)" stroke="#000000" stroke-width="0" /></svg>
                     </div>
@@ -66,7 +66,7 @@ class LgRemoteControlmini extends LitElement {
                 
                     `}
 
-                  <div class="grid-container-volume-channel-control" >
+                  <div class="grid-container-volume-channel-control" style="position:absolute;top:0;left:50%">
                       <button class="btn ripple"  style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._media_player_service("volume_up")}><ha-icon icon="mdi:plus"/></button>
                       
                       <button class="btn ripple" style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._button("CHANNELUP")}><ha-icon icon="mdi:chevron-up"/></button>

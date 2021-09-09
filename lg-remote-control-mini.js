@@ -38,7 +38,7 @@ class LgRemoteControlmini extends LitElement {
 
         return html`
             <ha-card class="flex">
-            <div class="page" style="--remote-button-color: ${buttonColor}; --remote-text-color: ${textColor}; --remote-color: none; --remotewidth: ${remoteWidth};  --main-border-color: ${borderColor}; --main-border-width: ${borderWidth};">
+            <div class="page" style="--remote-button-color: ${buttonColor}; --remote-text-color: ${textColor}; --remote-color: none; --remotewidth: ${remoteWidth};  --main-border-color: ${borderColor}; --main-border-width: ${borderWidth};" position: relative; height: 300px;>
                  ${this._show_inputs ? html`
                  ` : html`
                  ${this._show_sound_output ? html`
@@ -66,7 +66,7 @@ class LgRemoteControlmini extends LitElement {
                 
                     `}
 
-                  <div class="grid-container-volume-channel-control">
+                  <div class="grid-container-volume-channel-control" style="position:absolute; top: 0; right: 0;">
                       <button class="btn ripple"  style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._media_player_service("volume_up")}><ha-icon icon="mdi:plus"/></button>
                       
                       <button class="btn ripple" style="border-radius: 50% 50% 0px 0px; margin: 0px auto 0px auto; height: 100%;" @click=${() => this._button("CHANNELUP")}><ha-icon icon="mdi:chevron-up"/></button>

@@ -30,7 +30,7 @@ class LgRemoteControlmini extends LitElement {
         const borderWidth = this.config.dimensions && this.config.dimensions.border_width ? this.config.dimensions.border_width : "1px";
         const scale = this.config.dimensions && this.config.dimensions.scale ? this.config.dimensions.scale : 1;
         //const remoteWidth = Math.round(scale * 260) + "px";
-        const remoteWidth = "300px";
+        const remoteWidth = "100%";
 
         const backgroundColor = this.config.colors && this.config.colors.background ? this.config.colors.background : "var(--primary-background-color)";
         const borderColor = this.config.colors && this.config.colors.border ? this.config.colors.border: "var(--app-header-text-color)";
